@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Products</title>
+</head>
+<body style="margin: 0; padding: 0; background-color: rgb(192, 192, 192);">
+    
+   
+    <div style="background-color: #333; padding: 10px; width: 100%; box-sizing: border-box;">
+        <nav style="text-align: center;">
+            <a href="/" style="color: white; text-decoration: none; margin: 0 15px;">Home</a> |
+            <a href="/form" style="color: white; text-decoration: none; margin: 0 15px;">Add Product</a> |
+            <a href="/products" style="color: white; text-decoration: none; margin: 0 15px;">View Products</a>
+        </nav>
+    </div>
+
+    
+    <div align="center" style="padding: 20px;">
+        <h2>View Products Info</h2>
+        <p th:text="${msg}"></p>
+        <table border="2" cellpadding="10" cellspacing="0" style="margin: 20px auto; background-color: white;">
+            <thead>
+                <tr>
+                    <td><b>Product Id</b></td>
+                    <td><b>Product Name</b></td>
+                    <td><b>Product Price</b></td>
+                    <td><b>Product Quantity</b></td>
+                    <td><b>Product Description</b></td>
+                    <td><b>Action</b></td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="p: ${products}">
+                    <td th:text="${p.productId}"></td>
+                    <td th:text="${p.productName}"></td>
+                    <td th:text="${p.productPrice}"></td>
+                    <td th:text="${p.productQty}"></td>
+                    <td th:text="${p.productDesc}"></td>
+                    <td>
+                        <a th:href="@{/edit?(pid=${p.productId})}">Edit</a> |
+                        <a th:href="@{/delete?(pid=${p.productId})}">Delete</a>
+                    </td>
+                </tr>
+                <tr th:if="${products.isEmpty()}">
+                    <td colspan="6" align="center">
+                        No Records Found!
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+       
+    </div>
+</body>
+</html>

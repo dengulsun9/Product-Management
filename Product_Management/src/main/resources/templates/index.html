@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Product</title>
+</head>
+<body style=" background-color: rgb(192, 192, 192);">
+    
+	<div style="background-color: #333; padding: 10px;" align="center">
+	        <nav>
+	            <a href="/" style="color: white; text-decoration: none; margin: 0 15px;">Home</a> |
+	            <a href="/form" style="color: white; text-decoration: none; margin: 0 15px ;">Add Product</a> |
+	            <a href="/products" style="color: white; text-decoration: none; margin: 0 15px;">View Products</a>
+	        </nav>
+	    </div>
+
+    
+    <div align="center" style="padding: 20px;">
+        <h2>Product Management</h2>
+        
+        <p th:text="${msg}"></p>
+        
+        <form th:action="@{/product}" th:object="${product}" method="post">
+            <table border="1" cellpadding="10" cellspacing="0" align="center">
+                <tr>
+                    <td colspan="2" align="center">
+                        <input type="hidden" th:field="*{productId}" />
+                    </td>
+                </tr>
+                <tr>
+                    <td><b>Product Name:</b></td>
+                    <td><input type="text" th:field="*{productName}" /></td>
+                </tr>
+                <tr>
+                    <td><b>Product Price:</b></td>
+                    <td><input type="number" th:field="*{productPrice}" /></td>
+                </tr>
+                <tr>
+                    <td><b>Product Quantity:</b></td>
+                    <td><input type="number" th:field="*{productQty}" /></td>
+                </tr>
+                <tr>
+                    <td><b>Product Description:</b></td>
+                    <td><input type="text" th:field="*{productDesc}" /></td>
+                </tr>
+                <tr>
+                    <td colspan="2" align="center">
+                        <input type="submit" value="Save" />
+                    </td>
+                </tr>
+            </table>
+        </form>
+        
+       
+    </div>
+</body>
+</html>
